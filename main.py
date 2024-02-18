@@ -39,30 +39,20 @@ async def delete_item(item_id: int):
     return Response(status_code=status.HTTP_200_OK)
 
 
-@app.get("/api/items/add/button", response_class=HTMLResponse)
-async def get_item_add_button(request: Request):
-    return templates.TemplateResponse(
-        request=request, name="components/item_add_button.html"
-    )
-
-
 @app.post("/api/items", response_class=HTMLResponse)
 async def add_item(
     name: Annotated[str, Form()], description: Annotated[str, Form()], request: Request
 ):
+    message = ""
     try:
         service.insert(CreateItem(name=name, description=description))
     except Exception as e:
-        return templates.TemplateResponse(
-            request=request,
-            name="components/item_add_button.html",
-            context={"message": "Error while adding new Item"},
-        )
+        message = "ERROR"
 
     return templates.TemplateResponse(
         request=request,
-        name="components/item_add_button.html",
-        context={"message": "Successfully added new Item"},
+        name="components/item_table.html",
+        context={"request": request, "items": service.find_all(), "message": message},
     )
 
 

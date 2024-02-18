@@ -4,7 +4,7 @@
   <h1>FastAPI & HTMX</h1>
 
   <section>
-    <h3>1. Displaying data:</h3>
+    <h3>1. Tables:</h3>
     <p>
       The following table's html is build on the server and fetched on initial
       page load.
@@ -16,14 +16,14 @@
     <div hx-get="/api/items/table" hx-trigger="load" hx-swap="outerHTML"></div>
   </section>
 
-  <section>
+  <!-- <section>
     <h3>2. Adding new data:</h3>
     <div
       hx-get="/api/items/add/button"
       hx-trigger="load"
       hx-swap="outerHTML"
     ></div>
-  </section>
+  </section> -->
 </main>
 
 {% endblock %}
