@@ -1,32 +1,43 @@
-<div id="table-and-form" style="display: inline-block">
-  <table>
+<div id="table-and-form">
+  <table style="width: 100%">
     <thead>
       <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Description</th>
-        <th>Action</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
-    <tbody
-      hx-confirm="Are you sure?"
-      hx-target="closest tr"
-      hx-swap="outerHTML swap:1s"
-    >
+    <tbody>
       {% for item in items %}
       <tr>
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{item.description}}</td>
-        <td>
-          <button hx-delete="/api/items/{{item.id}}">Delete</button>
+        <td hx-target="closest tr" hx-swap="outerHTML">
+          <button class="btn-secondary">Edit</button>
+        </td>
+        <td
+          hx-confirm="Are you sure?"
+          hx-target="closest tr"
+          hx-swap="outerHTML swap:1s"
+        >
+          <button class="btn-secondary" hx-delete="/api/items/{{item.id}}">
+            Delete
+          </button>
         </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   <br />
-  <button hx-get="/api/items/add" hx-swap="outerHTML" style="width: 100%">
+  <button
+    class="btn-primary"
+    hx-get="/api/items/add"
+    hx-swap="outerHTML"
+    style="width: 100%"
+  >
     Add new Item
   </button>
 </div>

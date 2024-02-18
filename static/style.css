@@ -13,14 +13,31 @@ main {
 button {
   border: 1px solid black;
   border-radius: 1rem;
-  background-color: white;
   cursor: pointer;
   padding: 0.5rem 1rem;
   font-weight: bold;
 }
 button:hover {
+}
+.btn-secondary {
+  background-color: white;
+  border-color: black;
+  color: black;
+}
+.btn-secondary:hover {
   background-color: black;
   color: white;
+  border-color: white;
+}
+.btn-primary {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+.btn-primary:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
 }
 
 table,
@@ -29,7 +46,12 @@ th,
 td {
   border-collapse: collapse;
   text-align: left;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+thead > tr {
+  background-color: black;
+  color: white;
 }
 
 th,
@@ -44,4 +66,26 @@ tr.htmx-swapping td {
 
 label {
   font-weight: bold;
+}
+
+section {
+  max-width: 60ch;
+}
+
+input {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  font-weight: bold;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dark {
+  color: white;
+  background-color: black;
+}
+
+h3 {
+  text-decoration: underline solid black;
 }

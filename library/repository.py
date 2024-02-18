@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Optional
 from library.classes import Item, CreateItem
 
 
@@ -16,6 +16,9 @@ class ItemRepository:
             ),
         }
 
+    def find_one(self, id: int) -> Optional[Item]:
+        return self._items.get(id)
+
     def find_all(self) -> List[Item]:
         return list(self._items.values())
 
@@ -27,3 +30,6 @@ class ItemRepository:
         self._items[new_id] = Item(
             id=new_id, name=create_item.name, description=create_item.name
         )
+
+    def update(self, item: Item):
+        self._items[item.id] = item

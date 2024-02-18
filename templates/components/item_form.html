@@ -1,16 +1,28 @@
-<h3>Add Item</h3>
-<form form hx-post="/api/items" hx-target="#table-and-form" style="width: 100%">
-  <div>
-    <label>Name</label>
+<div
+  class="dark"
+  style="border: 1px solid black; border-radius: 1rem; padding: 1rem"
+>
+  <h3>Add Item</h3>
+  <form
+    form
+    hx-post="/api/items"
+    hx-target="#table-and-form"
+    style="width: 100%"
+  >
+    <div>
+      <label>Name</label>
+      <br />
+      <input type="text" name="name" />
+    </div>
     <br />
-    <input type="text" name="name" />
-  </div>
-  <div>
-    <label>Description</label>
+    <div>
+      <label>Description</label>
+      <br />
+      <input type="text" name="description" />
+    </div>
     <br />
-    <input type="text" name="description" />
-  </div>
-  <div>
-    <button>Submit</button>
-  </div>
-</form>
+    <div>
+      <button class="btn-secondary">Submit</button>
+    </div>
+  </form>
+</div>

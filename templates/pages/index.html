@@ -1,13 +1,17 @@
 {% extends "layouts/base.html" %} {% block title %}FastAPI+Jinja+HTMX{% endblock
 %} {% block head %} {{ super() }} {% endblock %} {% block content %}
 <main>
-  <h1>FastAPI & HTMX</h1>
+  <h1>FastAPI + htmx + Jinja2 = ❤️</h1>
 
-  <section>
-    <h3>1. Tables:</h3>
+  <section style="display: inline-block">
+    <h3>1. How the tables have turned</h3>
     <p>
-      The following table's html is build on the server and fetched on initial
-      page load.
+      The following table's html is build on the server using
+      <strong>Jinja2</strong> templates and fetched on initial page load.
+    </p>
+    <p>
+      Clicking delete will <strong>delete</strong> the item from the server as
+      well as from the table by manipulating the DOM via <strong>htmx</strong>.
     </p>
     <p>
       Clicking the delete button makes a http delete request and removes the
@@ -15,15 +19,6 @@
     </p>
     <div hx-get="/api/items/table" hx-trigger="load" hx-swap="outerHTML"></div>
   </section>
-
-  <!-- <section>
-    <h3>2. Adding new data:</h3>
-    <div
-      hx-get="/api/items/add/button"
-      hx-trigger="load"
-      hx-swap="outerHTML"
-    ></div>
-  </section> -->
 </main>
 
 {% endblock %}
