@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody
+    hx-confirm="Are you sure?"
+    hx-target="closest tr"
+    hx-swap="outerHTML swap:1s"
+  >
+    {% for item in items %}
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.description}}</td>
+      <td>
+        <button hx-delete="/api/items/1">Delete</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

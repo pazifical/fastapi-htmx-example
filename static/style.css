@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+}
+
+table,
+tr,
+th,
+td {
+  border-collapse: collapse;
+  text-align: left;
+  border: 1px solid black;
+}
+
+th,
+td {
+  padding: 0.2rem 0.5rem;
+}
+
+tr.htmx-swapping td {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}

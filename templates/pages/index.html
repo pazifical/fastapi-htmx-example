@@ -1,0 +1,13 @@
+{% extends "layouts/base.html" %} {% block title %}FastAPI+Jinja+HTMX{% endblock
+%} {% block head %} {{ super() }} {% endblock %} {% block content %}
+<main>
+  <h1>FastAPI & HTMX</h1>
+  <p class="important">Welcome to my example</p>
+  <table
+    hx-get="/api/items/table"
+    hx-trigger="load"
+    hx-swap="outerHTML"
+  ></table>
+</main>
+
+{% endblock %}
