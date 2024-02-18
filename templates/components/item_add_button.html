@@ -1,0 +1,4 @@
+{% if message %}
+<p>{{message}}</p>
+{% endif %}
+<button hx-get="/api/items/add" hx-swap="outerHTML">Add new Item</button>

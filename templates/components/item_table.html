@@ -18,7 +18,7 @@
       <td>{{item.name}}</td>
       <td>{{item.description}}</td>
       <td>
-        <button hx-delete="/api/items/1">Delete</button>
+        <button hx-delete="/api/items/{{item.id}}">Delete</button>
       </td>
     </tr>
     {% endfor %}

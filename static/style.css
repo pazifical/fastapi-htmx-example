@@ -7,6 +7,7 @@ body {
 main {
   max-width: 1200px;
   margin: auto;
+  padding: 1rem;
 }
 
 table,
@@ -26,4 +27,8 @@ td {
 tr.htmx-swapping td {
   opacity: 0;
   transition: opacity 1s ease-out;
+}
+
+label {
+  font-weight: bold;
 }
