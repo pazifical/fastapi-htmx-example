@@ -1,51 +1,70 @@
 {% extends "layouts/base.html" %} {% block title %}FastAPI+Jinja+HTMX{% endblock
 %} {% block head %} {{ super() }} {% endblock %} {% block content %}
 <main>
-  <h1>FastAPI + htmx + Jinja2 = ❤️</h1>
-
-  
   <section>
-    <article>
     <h3>1. Rendering and editing tabular data</h3>
-    <p>
-      The following table's html is build on the server using
-      <strong>Jinja2</strong> templates and fetched on initial page load.
-    </p>
-    <p>
-      Clicking delete will <strong>delete</strong> the item from the server as
-      well as from the table by manipulating the DOM via <strong>htmx</strong>.
-    </p>
-    <p>
-      Clicking the delete button makes a http delete request and removes the
-      line.
-    </p>
-    <div hx-get="/api/items/table" hx-trigger="load" hx-swap="outerHTML"></div>
+    <article class="flex">
+      <div>
+        <p>
+          The following table's html is build on the server using
+          <strong>Jinja2</strong> templates and fetched on initial page load.
+        </p>
+        <p>
+          Clicking delete will <strong>delete</strong> the item from the server
+          as well as from the table by manipulating the DOM via
+          <strong>htmx</strong>.
+        </p>
+        <p>
+          Clicking the delete button makes a http delete request and removes the
+          line.
+        </p>
+      </div>
+      <div>
+        <div
+          hx-get="/api/items/table"
+          hx-trigger="load"
+          hx-swap="outerHTML"
+        ></div>
+      </div>
+    </article>
   </section>
-  <br>
-  <br>
-  <section >
-    <article>
-    <h3>2. Fetching external data</h3>
-    <p>
-      In this example, an external URL (https://catfact.ninja/fact) is called. 
-      The response data is server rendered and handed over to the frontend.
-    </p>
-    <p>
-      For displaying a loading information, htmx and css are used together.
-    </p>
-    <div hx-get="/api/cat/fact/div" hx-trigger="load" hx-swap="outerHTML"></div>
-  </article>
-  </section>
-  <br>
-  <br>
+
+  <div class="sep"></div>
+
   <section>
+    <h3>2. Fetching external data</h3>
     <article>
-      <h3>3. Selecting</h3>
+      <div>
+        <p>
+          In this example, an external URL (https://catfact.ninja/fact) is
+          called. The response data is server rendered and handed over to the
+          frontend.
+        </p>
+        <p>
+          For displaying a loading information, htmx and css are used together.
+        </p>
+      </div>
+      <div
+        hx-get="/api/cat/fact/div"
+        hx-trigger="load"
+        hx-swap="outerHTML"
+      ></div>
+    </article>
+  </section>
+
+  <div class="sep"></div>
+
+  <section>
+    <h3>3. Selecting</h3>
+    <article>
+      <p>A select input can trigger a http request as well.</p>
       <p>
-        
+        After the selection is changed, the change is sent to the server. The
+        select is rerendered afterwards.
       </p>
-      <div hx-get="/api/category" hx-trigger="load" hx-swap="outerHTML"></div>
-  
+      <div>
+        <div hx-get="/api/category" hx-trigger="load" hx-swap="outerHTML"></div>
+      </div>
     </article>
   </section>
 </main>

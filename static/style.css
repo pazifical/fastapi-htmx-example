@@ -79,9 +79,16 @@ label {
   font-weight: bold;
 }
 
-article {
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+p,
+i {
   max-width: 60ch;
-  display: inline-block;
 }
 
 input,
@@ -108,9 +115,18 @@ h3 {
   text-decoration: underline solid black;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
 .my-indicator {
   > .show {
-    display: inline;
+    display: inline-block;
   }
   > .loading {
     display: none;
@@ -126,6 +142,31 @@ h3 {
     display: none;
   }
   > .loading {
-    display: inline;
+    display: inline-block;
   }
+}
+
+a {
+  color: black;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  a {
+    font-weight: bold;
+  }
+}
+
+.sep {
+  height: 100px;
+  content: "";
 }
