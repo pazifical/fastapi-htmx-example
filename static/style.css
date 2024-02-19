@@ -10,16 +10,15 @@ main {
   padding: 1rem;
 }
 
-button {
+button,
+input[type="submit"] {
   border: 1px solid black;
   border-radius: 1rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
   font-weight: bold;
 }
-button:hover {
-  /* transition: 250ms; */
-}
+
 button:active {
   box-shadow: 3px 0px 0px red, -3px 0px 0px red, 0px 3px 0px red,
     0px -3px 0px red;
@@ -44,6 +43,12 @@ button:active {
   color: black;
   border-color: black;
 }
+table {
+  caption {
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+}
 
 table,
 tr,
@@ -56,6 +61,7 @@ td {
 tr {
   border-bottom: 1px solid black;
 }
+
 tr:last-of-type {
   border-bottom: none;
 }
@@ -91,7 +97,8 @@ i {
   max-width: 60ch;
 }
 
-input,
+input[type="text"],
+input[type="number"],
 select {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;

@@ -1,0 +1,44 @@
+<div id="table-and-form" style="width: 65ch">
+  <table>
+    <caption>
+      A Look Into My Cupboard
+    </caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+      <tr
+        hx-get="/api/items/{{item.id}}/row"
+        hx-trigger="load"
+        hx-swap="outerHTML"
+      ></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button
+    class="btn-secondary"
+    hx-get="/api/items/table?max_items={{max_items+2}}"
+    hx-swap="outerHTML"
+    hx-target="#table-and-form"
+    style="width: 100%"
+  >
+    more
+  </button>
+  <br />
+  <br />
+  <button
+    class="btn-primary"
+    hx-get="/api/items/form"
+    hx-swap="outerHTML"
+    style="width: 100%"
+  >
+    Add new Item
+  </button>
+</div>

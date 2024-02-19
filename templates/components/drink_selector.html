@@ -1,11 +1,11 @@
-<div id="category-form">
+<div id="drink-form">
   <form>
     <label>Choose a beverage</label><br />
     <select
-      name="category"
-      hx-put="/api/category"
+      name="drink"
+      hx-put="/api/drinks"
       hx-trigger="change"
-      hx-target="#category-form"
+      hx-target="#drink-form"
       value="{{selected}}"
     >
       {% for option in options %} {% if option == selected %}
@@ -16,6 +16,9 @@
     </select>
   </form>
   {% if selected %}
-  <p>The server knows that you selected: <strong>{{selected}}</strong></p>
+  <p style="font-size: 1.4rem">
+    The <strong>server</strong> knows that you selected:
+    <strong>{{selected}}</strong>. Cheers!
+  </p>
   {% endif %}
 </div>

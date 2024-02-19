@@ -3,7 +3,7 @@
 <main>
   <section>
     <h3>1. Rendering and editing tabular data</h3>
-    <article class="flex">
+    <article>
       <div>
         <p>
           The following table's html is build on the server using
@@ -17,6 +17,11 @@
         <p>
           Clicking the delete button makes a http delete request and removes the
           line.
+        </p>
+        <p>
+          Clicking the edit button also makes a http get requests to change to
+          row to a form. After editing, the save button sends a http put request
+          to the server. Afterwards the new items row is returned.
         </p>
       </div>
       <div>
@@ -63,7 +68,7 @@
         select is rerendered afterwards.
       </p>
       <div>
-        <div hx-get="/api/category" hx-trigger="load" hx-swap="outerHTML"></div>
+        <div hx-get="/api/drinks" hx-trigger="load" hx-swap="outerHTML"></div>
       </div>
     </article>
   </section>
