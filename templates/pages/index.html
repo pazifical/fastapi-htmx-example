@@ -3,8 +3,10 @@
 <main>
   <h1>FastAPI + htmx + Jinja2 = ❤️</h1>
 
-  <section style="display: inline-block">
-    <h3>1. How the tables have turned</h3>
+  
+  <section>
+    <article>
+    <h3>1. Rendering and editing tabular data</h3>
     <p>
       The following table's html is build on the server using
       <strong>Jinja2</strong> templates and fetched on initial page load.
@@ -18,6 +20,21 @@
       line.
     </p>
     <div hx-get="/api/items/table" hx-trigger="load" hx-swap="outerHTML"></div>
+  </section>
+  <br>
+  <br>
+  <section >
+    <article>
+    <h3>2. Fetching external data</h3>
+    <p>
+      In this example, an external URL (https://catfact.ninja/fact) is called. 
+      The response data is server rendered and handed over to the frontend.
+    </p>
+    <p>
+      For displaying a loading information, htmx and css are used together.
+    </p>
+    <div hx-get="/api/cat/fact/div" hx-trigger="load" hx-swap="outerHTML"></div>
+  </article>
   </section>
 </main>
 

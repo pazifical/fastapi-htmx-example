@@ -1,8 +1,10 @@
+import time
 from typing import Annotated
 from fastapi import FastAPI, Form, Request, Response, status
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import requests
 from library.classes import CreateItem, Item
 
 from library.repository import ItemRepository
@@ -22,6 +24,23 @@ service = ItemService(repository)
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse(request=request, name="pages/index.html")
+
+
+@app.get("/api/cat/fact/div", response_class=HTMLResponse)
+async def index(request: Request):
+    time.sleep(1)
+    response = requests.get("https://catfact.ninja/fact")
+    try:
+        data = response.json()
+    except Exception as e:
+        print(e)
+        data = {}
+
+    return templates.TemplateResponse(
+        request=request,
+        name="components/cat_fact_div.html",
+        context={"fact": data.get("fact")},
+    )
 
 
 @app.get("/api/items/add", response_class=HTMLResponse)

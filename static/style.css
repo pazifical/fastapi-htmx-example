@@ -18,6 +18,11 @@ button {
   font-weight: bold;
 }
 button:hover {
+  /* transition: 250ms; */
+}
+button:active {
+  box-shadow: 3px 0px 0px red, -3px 0px 0px red, 0px 3px 0px red,
+    0px -3px 0px red;
 }
 .btn-secondary {
   background-color: white;
@@ -68,8 +73,9 @@ label {
   font-weight: bold;
 }
 
-section {
+article {
   max-width: 60ch;
+  display: inline-block;
 }
 
 input {
@@ -88,4 +94,26 @@ input {
 
 h3 {
   text-decoration: underline solid black;
+}
+
+.my-indicator {
+  > .show {
+    display: inline;
+  }
+  > .loading {
+    display: none;
+  }
+}
+.loading {
+  display: none;
+}
+
+.htmx-request .my-indicator,
+.htmx-request.my-indicator {
+  > .show {
+    display: none;
+  }
+  > .loading {
+    display: inline;
+  }
 }

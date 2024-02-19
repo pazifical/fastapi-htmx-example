@@ -3,12 +3,7 @@
   style="border: 1px solid black; border-radius: 1rem; padding: 1rem"
 >
   <h3>Add Item</h3>
-  <form
-    form
-    hx-post="/api/items"
-    hx-target="#table-and-form"
-    style="width: 100%"
-  >
+  <form hx-post="/api/items" hx-target="#table-and-form" style="width: 100%">
     <div>
       <label>Name</label>
       <br />
@@ -23,6 +18,13 @@
     <br />
     <div>
       <button class="btn-secondary">Submit</button>
+      <button
+        hx-get="/api/items/table"
+        hx-target="#table-and-form"
+        class="btn-secondary"
+      >
+        Cancel
+      </button>
     </div>
   </form>
 </div>
