@@ -31,6 +31,16 @@
       {% endfor %}
     </tbody>
   </table>
+  <button
+    class="btn-secondary"
+    hx-get="/api/items/table?max_items={{max_items+2}}"
+    hx-swap="outerHTML"
+    hx-target="#table-and-form"
+    style="width: 100%"
+  >
+    more
+  </button>
+  <br />
   <br />
   <button
     class="btn-primary"

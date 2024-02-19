@@ -1,0 +1,21 @@
+<div id="category-form">
+  <form>
+    <label>Choose a beverage</label><br />
+    <select
+      name="category"
+      hx-put="/api/category"
+      hx-trigger="change"
+      hx-target="#category-form"
+      value="{{selected}}"
+    >
+      {% for option in options %} {% if option == selected %}
+      <option selected>{{option}}</option>
+      {% else %}
+      <option>{{option}}</option>
+      {% endif %} {% endfor %}
+    </select>
+  </form>
+  {% if selected %}
+  <p>The server sais that you selected: <strong>{{selected}}</strong></p>
+  {% endif %}
+</div>

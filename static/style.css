@@ -51,7 +51,13 @@ th,
 td {
   border-collapse: collapse;
   text-align: left;
+}
+
+tr {
   border-bottom: 1px solid black;
+}
+tr:last-of-type {
+  border-bottom: none;
 }
 
 thead > tr {
@@ -78,13 +84,19 @@ article {
   display: inline-block;
 }
 
-input {
+input,
+select {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid black;
   font-weight: bold;
   width: 100%;
   box-sizing: border-box;
+}
+select {
+  text-align: center;
+  width: auto;
+  font-size: 1.1rem;
 }
 
 .dark {

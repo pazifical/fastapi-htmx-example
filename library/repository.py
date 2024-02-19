@@ -12,15 +12,29 @@ class ItemRepository:
                 id=1, name="Teapot", description="A teapot made out of purple ceramics"
             ),
             2: Item(
-                id=2, name="Rocks Glas", description="A glass for your next whiskey"
+                id=2,
+                name="Cola glas",
+                description="You know where you got that from",
             ),
+            3: Item(
+                id=3, name="Rocks Glas", description="A glass for your next whiskey"
+            ),
+            4: Item(
+                id=4,
+                name="Blue Coffee Mug",
+                description="A blue coffee mug. Nothing more.",
+            ),
+            5: Item(id=5, name="Water bottle", description="A bottle of water"),
         }
 
     def find_one(self, id: int) -> Optional[Item]:
         return self._items.get(id)
 
-    def find_all(self) -> List[Item]:
-        return list(self._items.values())
+    def find_all(self, limit: Optional[int] = 3) -> List[Item]:
+        items = sorted(list(self._items.values()), key=lambda x: x.id, reverse=True)
+        if len(items) > limit:
+            return items[:limit]
+        return items
 
     def delete(self, id: int):
         self._items.pop(id)

@@ -17,7 +17,9 @@
     </div>
     <br />
     <div>
+      <!-- This button submits the form by using its hx-post -->
       <button class="btn-secondary">Submit</button>
+      <!-- This button cancles the form via reloading the whole table -->
       <button
         hx-get="/api/items/table"
         hx-target="#table-and-form"

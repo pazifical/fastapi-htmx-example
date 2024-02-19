@@ -11,8 +11,8 @@ class ItemService:
     def delete(self, item_id: int):
         self._repository.delete(item_id)
 
-    def find_all(self) -> List[Item]:
-        return self._repository.find_all()
+    def find_all(self, limit: Optional[int] = 3) -> List[Item]:
+        return self._repository.find_all(limit)
 
     def find_one(self, id: int) -> Optional[Item]:
         return self._repository.find_one(id)

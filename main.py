@@ -1,5 +1,5 @@
 import time
-from typing import Annotated
+from typing import Annotated, Optional
 from fastapi import FastAPI, Form, Request, Response, status
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -19,6 +19,8 @@ templates = Jinja2Templates(directory="templates")
 
 repository = ItemRepository()
 service = ItemService(repository)
+
+drinks = ["🍺 Beer", "🍷 Wine", "🥃 Whiskey", "🍹 Cocktail"]
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -89,26 +91,44 @@ async def edit_item(
 async def add_item(
     name: Annotated[str, Form()], description: Annotated[str, Form()], request: Request
 ):
-    message = ""
     try:
         service.insert(CreateItem(name=name, description=description))
     except Exception as e:
-        message = "ERROR"
+        print(e)
 
-    return templates.TemplateResponse(
-        request=request,
-        name="components/item_table.html",
-        context={"request": request, "items": service.find_all(), "message": message},
-    )
+    return items_table(request)
 
 
 @app.get("/api/items/table", response_class=HTMLResponse)
-async def get_item_table(request: Request):
+async def get_item_table(request: Request, max_items: Optional[int] = 3):
+    return items_table(request, max_items)
+
+
+def items_table(request: Request, max_items: Optional[int] = 3):
     return templates.TemplateResponse(
         request=request,
         name="components/item_table.html",
         context={
             "request": request,
-            "items": service.find_all(),
+            "items": service.find_all(limit=max_items),
+            "max_items": max_items,
         },
+    )
+
+
+@app.put("/api/category", response_class=HTMLResponse)
+async def update_category(request: Request, category: Annotated[str, Form()]):
+    return templates.TemplateResponse(
+        request=request,
+        name="components/category_selector.html",
+        context={"request": request, "selected": category, "options": drinks},
+    )
+
+
+@app.get("/api/category", response_class=HTMLResponse)
+async def get_category(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="components/category_selector.html",
+        context={"request": request, "options": drinks},
     )
